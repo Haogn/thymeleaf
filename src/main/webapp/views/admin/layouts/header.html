@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Header</title>
-</head>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" >
+<th:block th:insert="admin/layouts/head.html"></th:block>
 <body>
-<header class="main-header">
+<header class="main-header" th:fragment="header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -155,5 +152,6 @@
         </div>
     </nav>
 </header>
+<th:block th:insert="admin/layouts/js.html"></th:block>
 </body>
 </html>
