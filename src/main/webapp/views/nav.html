@@ -18,7 +18,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 <!--                        Dropdown link-->
-                        <span th:text="${session.email != null ? session.email :'Account' }"></span>
+                        <span th:text="${session.user != null ? session.user.userName :'Account' }"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/login">Login</a></li>

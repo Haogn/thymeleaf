@@ -1,42 +1,29 @@
-package rikkei.academy.model.entity;
+package rikkei.academy.dto.request;
 
 import rikkei.academy.utl.Role;
 
-public class User {
-    private int userId ;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class UserRegisterDTO {
+    @NotEmpty(message = "Ten khong duoc de trong")
     private String userName ;
+    @Email(message = "Email sai dinh dang")
+    @NotEmpty(message = "Email khong duoc de trong")
     private String email ;
+    @Size(min = 8, max = 16, message = "Password it nhat 8 ky tu , nhieu nhat 16 ky tu")
     private String password ;
     private String phone ;
     private Role role = Role.USER ;
 
-    public User(){
-
-    }
-
-    public User(int userId, String userName, String email, String password, String phone, Role role) {
-        this.userId = userId;
+    public UserRegisterDTO(String userName, String email, String password, String phone, Role role) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.role = role;
-    }
-
-    public User(String userName, String email, String password, String phone, Role role) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.role = role;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getUserName() {
@@ -47,20 +34,20 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone() {
@@ -78,6 +65,4 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
-
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -50,13 +51,13 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         return thymeleafViewResolver;
     }
 
-    // TODO  cấu hình upload-file
-    @Bean
-    CommonsMultipartResolver multipartResolver(){
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSizePerFile(5242880);
-        return  resolver;
-    }
+        // TODO  cấu hình upload-file
+        @Bean
+        CommonsMultipartResolver multipartResolver(){
+            CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+            resolver.setMaxUploadSizePerFile(5242880);
+            return  resolver;
+        }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -65,5 +66,12 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
                         "classpath:assets/fonts/",
                         "classpath:assets/images/",
                         "classpath:assets/js/");
+    }
+
+    // cau hinh AuthInterceptor
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/admin/**");
     }
 }

@@ -1,32 +1,21 @@
-package rikkei.academy.model.entity;
+package rikkei.academy.dto.response;
 
 import rikkei.academy.utl.Role;
 
-public class User {
+public class UserProfileDTO {
     private int userId ;
     private String userName ;
     private String email ;
-    private String password ;
     private String phone ;
     private Role role = Role.USER ;
-
-    public User(){
+    public UserProfileDTO(){
 
     }
 
-    public User(int userId, String userName, String email, String password, String phone, Role role) {
+    public UserProfileDTO(int userId, String userName, String email, String phone, Role role) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.role = role;
-    }
-
-    public User(String userName, String email, String password, String phone, Role role) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
         this.phone = phone;
         this.role = role;
     }
@@ -45,14 +34,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -78,6 +59,4 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
-
 }
